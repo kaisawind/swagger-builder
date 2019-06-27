@@ -52,5 +52,8 @@ yarn build:swagger
 - [kaisawind](https://github.com/kaisawind) - creator, maintainer
 
 ## License
+
+All original code in this repository is licensed under [MIT](https://github.com/kaisawind/swagger-builder/blob/master/LICENSE) license.
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkaisawind%2Fswagger-builder.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkaisawind%2Ffile-manager?ref=badge_large)
 
