@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/kaisawind/swagger-builder/releases">
-    <img src="https://img.shields.io/github/release/kaisawind/swagger-builderr.svg" alt="GitHub release">
+    <img src="https://img.shields.io/github/release/kaisawind/swagger-builder.svg" alt="GitHub release">
   </a>
   <img src="https://img.shields.io/badge/node-%3E%3D8.9-blue.svg" />
   <img src="https://img.shields.io/badge/npm-%3E%3D%203.0.0-blue.svg" />
