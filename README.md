@@ -26,7 +26,14 @@
 
 ## Getting started
 
-Modify `package.json`, the `definition` is the input swagger file, the `dist` is the js where to output.
+```
+npm install -g swagger-builder
+```
+or
+
+```
+yarn global add swagger-builder
+```
 
 ```bash
 usage: swagger-builder.js [-h] [-v] [-f FILE] [-o OUTPUT]
