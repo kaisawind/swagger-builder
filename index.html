@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>axios - get example</title>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+  </head>
+  <body class="container">
+    <h1>axios.get</h1>
+    <ul id="people" class="list-unstyled"></ul>
+
+    <script src="./axios.min.js"></script>
+    <script>
+      axios.get('http://localhost/get/server', {
+        data: {
+            firstName: 'Fred'
+        }
+      })
+    </script>
+  </body>
+</html>
