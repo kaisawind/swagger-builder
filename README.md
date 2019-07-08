@@ -40,10 +40,9 @@ usage: swagger-builder.js [-h] [-v] [-f FILE] [-o OUTPUT]
 
 Optional arguments:
   -h, --help            Show this help message and exit.
-  -v, --version         Show program's version number and exit.
-  -f FILE, --file FILE  Swagger file to build
-  -o OUTPUT, --output OUTPUT
-                        Js file to output
+  -v, --version         Show program version number and exit.
+  -f, --file            Swagger file to build
+  -o, --output          Js file to output
 ```
 
 ## Contributors
