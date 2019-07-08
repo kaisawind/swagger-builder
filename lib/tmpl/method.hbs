@@ -1,0 +1,36 @@
+/**
+ * @name {{operationId}}
+{{#if deprecated}}
+ * @deprecated
+{{/if}}
+ * @method {{method}}
+ * @summary {{ summary }}
+{{ wrap-helper description }}
+{{#parameters}}
+ * @param { {{type}} } [{{in}}] {{name}} - {{description}}
+{{/parameters}}
+ */
+export const {{operationId}} = (parameters = {}) => {
+  const config = parameters.$config ? parameters.$config : {}
+  let url = '{{path}}'
+  let params = {query: [], headers: [], body: {}}
+{{#if consumes}}
+  config.headers['Content-Type'] = '{{consumes}}'
+{{/if}}
+{{#if produces}}
+  config.headers['Accept'] = '{{produces}}'
+{{/if}}
+{{form-data-helper consumes}}
+{{#parameters}}
+  if (parameters['{{name}}'] !== undefined) {
+{{compare-helper this}}
+  }
+{{#required}}
+  if(parameters['{{name}}'] === undefined) {
+    return Promise.reject(new Error('Missing required {{type}} parameter: {{name}}'))
+  }
+{{/required}}
+{{/parameters}}
+  return request('{{method}}', url, params, config)
+}
+
