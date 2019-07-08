@@ -28,25 +28,16 @@
 
 Modify `package.json`, the `definition` is the input swagger file, the `dist` is the js where to output.
 
-```json
-{
-  "swagger": {
-    "definition": "./example/swagger/swagger.json",
-    "className": "API",
-    "moduleName": "apis",
-    "dist": "./example/dist"
-  }
-}
-```
-
 ```bash
-yarn
-yarn build:swagger
+usage: swagger-builder.js [-h] [-v] [-f FILE] [-o OUTPUT]
+
+Optional arguments:
+  -h, --help            Show this help message and exit.
+  -v, --version         Show program's version number and exit.
+  -f FILE, --file FILE  Swagger file to build
+  -o OUTPUT, --output OUTPUT
+                        Js file to output
 ```
-
-## TODO
-
-- support npm package
 
 ## Contributors
 - [kaisawind](https://github.com/kaisawind) - creator, maintainer

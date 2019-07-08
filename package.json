@@ -1,25 +1,23 @@
 {
   "name": "swagger-builder",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "build swagger to javascript with axios",
   "author": "kaisawind <wind.kaisa@gmail.com>",
   "license": "MIT",
-  "private": true,
-  "scripts": {
-    "build:swagger": "grunt swagger"
-  },
-  "swagger": {
-    "definition": "./example/swagger/swagger.json",
-    "className": "API",
-    "moduleName": "apis",
-    "dist": "./example/dist"
-  },
+  "keywords": [
+    "swagger",
+    "parser",
+    "axios"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kaisawind/swagger-builder.git"
   },
   "bugs": {
     "url": "https://github.com/kaisawind/swagger-builder/issues"
+  },
+  "bin": {
+    "swagger-builder": "bin/swagger-builder.js"
   },
   "dependencies": {
     "argparse": "^1.0.10",
@@ -37,5 +35,9 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "scripts": {
+    "test-yaml": "./bin/swagger-builder.js -f=./example/swagger/swagger.yaml -o=./example/dist/yaml_apis.js",
+    "test-json": "./bin/swagger-builder.js -f=./example/swagger/swagger.json -o=./example/dist/json_apis.js"
+  }
 }
