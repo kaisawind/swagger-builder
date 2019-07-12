@@ -5,6 +5,7 @@
   "author": "kaisawind <wind.kaisa@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "babel": "babel ./example/dist/yaml_apis.js > ./test/apis.js",
     "lint": "eslint --ext .js .",
     "test-yaml": "./bin/swagger-builder.js -f=./example/swagger/swagger.yaml -o=./example/dist/yaml_apis.js",
     "test-json": "./bin/swagger-builder.js -f=./example/swagger/swagger.json -o=./example/dist/json_apis.js"

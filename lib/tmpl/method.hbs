@@ -13,7 +13,10 @@
 export const {{operationId}} = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
 {{#if consumes}}
   config.headers['Content-Type'] = '{{consumes}}'
 {{/if}}

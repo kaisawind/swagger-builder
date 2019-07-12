@@ -16,7 +16,11 @@
 {{/with}}
 
 import axios from 'axios'
-let domain = '{{host}}/{{basePath}}'
+{{#each schemes}}
+{{#if @first}}
+let domain = '{{this}}://{{@root.host}}{{@root.basePath}}'
+{{/if}}
+{{/each}}
 let axiosInstance = axios.create()
 export const getDomain = () => {
   return domain
@@ -34,6 +38,7 @@ export const setAxiosInstance = ($axiosInstance) => {
 export const request = (method, url, params, config = {}) => {
   method = method.toLowerCase()
   let configs = {
+    baseURL: domain,
     method: method,
     url: url,
     params: params.querys,
@@ -41,7 +46,7 @@ export const request = (method, url, params, config = {}) => {
     data: params.body
   }
   configs = Object.assign(configs, config)
-  axiosInstance(configs)
+  return axiosInstance(configs)
 }
 
 {{> methods }}

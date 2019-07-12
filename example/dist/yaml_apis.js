@@ -10,7 +10,7 @@
  */
 
 import axios from 'axios'
-let domain = 'petstore.swagger.io//v2'
+let domain = 'https://petstore.swagger.io/v2'
 let axiosInstance = axios.create()
 export const getDomain = () => {
   return domain
@@ -28,6 +28,7 @@ export const setAxiosInstance = ($axiosInstance) => {
 export const request = (method, url, params, config = {}) => {
   method = method.toLowerCase()
   let configs = {
+    baseURL: domain,
     method: method,
     url: url,
     params: params.querys,
@@ -35,7 +36,7 @@ export const request = (method, url, params, config = {}) => {
     data: params.body
   }
   configs = Object.assign(configs, config)
-  axiosInstance(configs)
+  return axiosInstance(configs)
 }
 
 /**
@@ -48,7 +49,10 @@ export const request = (method, url, params, config = {}) => {
 export const PetAddPet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json,application/xml'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet'
@@ -72,7 +76,10 @@ export const PetAddPet = (parameters = {}) => {
 export const PetUpdatePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json,application/xml'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet'
@@ -96,7 +103,10 @@ export const PetUpdatePet = (parameters = {}) => {
 export const PetFindPetsByStatus = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/findByStatus'
@@ -121,7 +131,10 @@ export const PetFindPetsByStatus = (parameters = {}) => {
 export const PetFindPetsByTags = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/findByTags'
@@ -145,7 +158,10 @@ export const PetFindPetsByTags = (parameters = {}) => {
 export const PetGetPetById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/{petId}'
@@ -171,7 +187,10 @@ export const PetGetPetById = (parameters = {}) => {
 export const PetUpdatePetWithForm = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/{petId}'
@@ -202,7 +221,10 @@ export const PetUpdatePetWithForm = (parameters = {}) => {
 export const PetDeletePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/{petId}'
@@ -231,7 +253,10 @@ export const PetDeletePet = (parameters = {}) => {
 export const PetUploadFile = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'multipart/form-data'
   config.headers['Accept'] = 'application/json'
   url = '/pet/{petId}/uploadImage'
@@ -260,7 +285,10 @@ export const PetUploadFile = (parameters = {}) => {
 export const StoreGetInventory = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/json'
   url = '/store/inventory'
@@ -278,7 +306,10 @@ export const StoreGetInventory = (parameters = {}) => {
 export const StorePlaceOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/store/order'
@@ -302,7 +333,10 @@ export const StorePlaceOrder = (parameters = {}) => {
 export const StoreGetOrderById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/store/order/{orderId}'
@@ -326,7 +360,10 @@ export const StoreGetOrderById = (parameters = {}) => {
 export const StoreDeleteOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/store/order/{orderId}'
@@ -350,7 +387,10 @@ export const StoreDeleteOrder = (parameters = {}) => {
 export const UserCreateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user'
@@ -374,7 +414,10 @@ export const UserCreateUser = (parameters = {}) => {
 export const UserCreateUsersWithArrayInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/createWithArray'
@@ -398,7 +441,10 @@ export const UserCreateUsersWithArrayInput = (parameters = {}) => {
 export const UserCreateUsersWithListInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/createWithList'
@@ -423,7 +469,10 @@ export const UserCreateUsersWithListInput = (parameters = {}) => {
 export const UserLoginUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/login'
@@ -452,7 +501,10 @@ export const UserLoginUser = (parameters = {}) => {
 export const UserLogoutUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/logout'
@@ -470,7 +522,10 @@ export const UserLogoutUser = (parameters = {}) => {
 export const UserGetUserByName = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/{username}'
@@ -495,7 +550,10 @@ export const UserGetUserByName = (parameters = {}) => {
 export const UserUpdateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/{username}'
@@ -525,7 +583,10 @@ export const UserUpdateUser = (parameters = {}) => {
 export const UserDeleteUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: [], body: {}}
+  const params = { query: [], headers: {}, body: {}}
+  if (config.headers === undefined) {
+    config.headers = {}
+  }
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/{username}'
