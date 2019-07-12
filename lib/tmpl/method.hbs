@@ -7,7 +7,7 @@
  * @summary {{ summary }}
 {{ wrap-helper description }}
 {{#parameters}}
- * @param { {{type}} } [{{in}}] {{name}} - {{description}}
+ * @param { {{type}} } [{{in}}] {{name}} - {{ safestring-helper description }}
 {{/parameters}}
  */
 export const {{operationId}} = (parameters = {}) => {
