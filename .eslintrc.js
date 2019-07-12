@@ -5,7 +5,10 @@ module.exports = {
     node: true,
     es6: true,
   },
-
+  parserOptions: {
+    parser: 'babel-eslint',
+    sourceType: 'module'
+  },
   // add your custom rules here
   rules: {
     'accessor-pairs': 2,

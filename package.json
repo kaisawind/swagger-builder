@@ -4,6 +4,11 @@
   "description": "build swagger to javascript with axios",
   "author": "kaisawind <wind.kaisa@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js .",
+    "test-yaml": "./bin/swagger-builder.js -f=./example/swagger/swagger.yaml -o=./example/dist/yaml_apis.js",
+    "test-json": "./bin/swagger-builder.js -f=./example/swagger/swagger.json -o=./example/dist/json_apis.js"
+  },
   "keywords": [
     "swagger",
     "parser",
@@ -25,6 +30,12 @@
     "swagger-parser": "^7.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "axios": "^0.19.0",
+    "babel-eslint": "^10.0.2",
+    "babel-polyfill": "^6.26.0",
     "eslint": "^6.0.1"
   },
   "engines": {
@@ -35,9 +46,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "scripts": {
-    "test-yaml": "./bin/swagger-builder.js -f=./example/swagger/swagger.yaml -o=./example/dist/yaml_apis.js",
-    "test-json": "./bin/swagger-builder.js -f=./example/swagger/swagger.json -o=./example/dist/json_apis.js"
-  }
+  ]
 }

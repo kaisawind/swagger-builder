@@ -32,7 +32,7 @@ export const request = (method, url, params, config = {}) => {
     url: url,
     params: params.querys,
     headers: params.headers,
-    data: params.body,
+    data: params.body
   }
   configs = Object.assign(configs, config)
   axiosInstance(configs)
@@ -42,20 +42,21 @@ export const request = (method, url, params, config = {}) => {
  * @name PetAddPet
  * @method post
  * @summary Add a new pet to the store
- * @description 
+ * @description
  * @param { Object } [body] body - Pet object that needs to be added to the store
  */
 export const PetAddPet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json,application/xml'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/pet'
 
   if (parameters['body'] !== undefined) {
     params.body = parameters['body']
   }
-  if(parameters['body'] === undefined) {
+  if (parameters['body'] === undefined) {
     return Promise.reject(new Error('Missing required Object parameter: body'))
   }
   return request('post', url, params, config)
@@ -65,20 +66,21 @@ export const PetAddPet = (parameters = {}) => {
  * @name PetUpdatePet
  * @method put
  * @summary Update an existing pet
- * @description 
+ * @description
  * @param { Object } [body] body - Pet object that needs to be added to the store
  */
 export const PetUpdatePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json,application/xml'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/pet'
 
   if (parameters['body'] !== undefined) {
     params.body = parameters['body']
   }
-  if(parameters['body'] === undefined) {
+  if (parameters['body'] === undefined) {
     return Promise.reject(new Error('Missing required Object parameter: body'))
   }
   return request('put', url, params, config)
@@ -93,15 +95,16 @@ export const PetUpdatePet = (parameters = {}) => {
  */
 export const PetFindPetsByStatus = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet/findByStatus'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/pet/findByStatus'
 
   if (parameters['status'] !== undefined) {
     params.querys.push(parameters['status'])
   }
-  if(parameters['status'] === undefined) {
+  if (parameters['status'] === undefined) {
     return Promise.reject(new Error('Missing required Array parameter: status'))
   }
   return request('get', url, params, config)
@@ -117,15 +120,16 @@ export const PetFindPetsByStatus = (parameters = {}) => {
  */
 export const PetFindPetsByTags = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet/findByTags'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/pet/findByTags'
 
   if (parameters['tags'] !== undefined) {
     params.querys.push(parameters['tags'])
   }
-  if(parameters['tags'] === undefined) {
+  if (parameters['tags'] === undefined) {
     return Promise.reject(new Error('Missing required Array parameter: tags'))
   }
   return request('get', url, params, config)
@@ -140,15 +144,16 @@ export const PetFindPetsByTags = (parameters = {}) => {
  */
 export const PetGetPetById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet/{petId}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/pet/{petId}'
 
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
   }
-  if(parameters['petId'] === undefined) {
+  if (parameters['petId'] === undefined) {
     return Promise.reject(new Error('Missing required Integer parameter: petId'))
   }
   return request('get', url, params, config)
@@ -158,22 +163,23 @@ export const PetGetPetById = (parameters = {}) => {
  * @name PetUpdatePetWithForm
  * @method post
  * @summary Updates a pet in the store with form data
- * @description 
+ * @description
  * @param { Integer } [path] petId - ID of pet that needs to be updated
  * @param { String } [formData] name - Updated name of the pet
  * @param { String } [formData] status - Updated status of the pet
  */
 export const PetUpdatePetWithForm = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet/{petId}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   config.headers['Accept'] = 'application/xml,application/json'
-  let formData = new URLSearchParams()
+  url = '/pet/{petId}'
+  const formData = new URLSearchParams()
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
   }
-  if(parameters['petId'] === undefined) {
+  if (parameters['petId'] === undefined) {
     return Promise.reject(new Error('Missing required Integer parameter: petId'))
   }
   if (parameters['name'] !== undefined) {
@@ -189,16 +195,17 @@ export const PetUpdatePetWithForm = (parameters = {}) => {
  * @name PetDeletePet
  * @method delete
  * @summary Deletes a pet
- * @description 
- * @param { String } [header] api_key - 
+ * @description
+ * @param { String } [header] api_key -
  * @param { Integer } [path] petId - Pet id to delete
  */
 export const PetDeletePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet/{petId}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/pet/{petId}'
 
   if (parameters['api_key'] !== undefined) {
     params.headers.push(parameters['api_key'])
@@ -206,7 +213,7 @@ export const PetDeletePet = (parameters = {}) => {
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
   }
-  if(parameters['petId'] === undefined) {
+  if (parameters['petId'] === undefined) {
     return Promise.reject(new Error('Missing required Integer parameter: petId'))
   }
   return request('delete', url, params, config)
@@ -216,22 +223,23 @@ export const PetDeletePet = (parameters = {}) => {
  * @name PetUploadFile
  * @method post
  * @summary uploads an image
- * @description 
+ * @description
  * @param { Integer } [path] petId - ID of pet to update
  * @param { String } [formData] additionalMetadata - Additional data to pass to server
  * @param { File } [formData] file - file to upload
  */
 export const PetUploadFile = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/pet/{petId}/uploadImage'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'multipart/form-data'
   config.headers['Accept'] = 'application/json'
-  let formData = new FormData()
+  url = '/pet/{petId}/uploadImage'
+  const formData = new FormData()
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
   }
-  if(parameters['petId'] === undefined) {
+  if (parameters['petId'] === undefined) {
     return Promise.reject(new Error('Missing required Integer parameter: petId'))
   }
   if (parameters['additionalMetadata'] !== undefined) {
@@ -251,10 +259,11 @@ export const PetUploadFile = (parameters = {}) => {
  */
 export const StoreGetInventory = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/store/inventory'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/json'
+  url = '/store/inventory'
 
   return request('get', url, params, config)
 }
@@ -263,20 +272,21 @@ export const StoreGetInventory = (parameters = {}) => {
  * @name StorePlaceOrder
  * @method post
  * @summary Place an order for a pet
- * @description 
+ * @description
  * @param { Object } [body] body - order placed for purchasing the pet
  */
 export const StorePlaceOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/store/order'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/store/order'
 
   if (parameters['body'] !== undefined) {
     params.body = parameters['body']
   }
-  if(parameters['body'] === undefined) {
+  if (parameters['body'] === undefined) {
     return Promise.reject(new Error('Missing required Object parameter: body'))
   }
   return request('post', url, params, config)
@@ -291,15 +301,16 @@ export const StorePlaceOrder = (parameters = {}) => {
  */
 export const StoreGetOrderById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/store/order/{orderId}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/store/order/{orderId}'
 
   if (parameters['orderId'] !== undefined) {
     url = url.replace('{orderId}', parameters['orderId'])
   }
-  if(parameters['orderId'] === undefined) {
+  if (parameters['orderId'] === undefined) {
     return Promise.reject(new Error('Missing required Integer parameter: orderId'))
   }
   return request('get', url, params, config)
@@ -314,15 +325,16 @@ export const StoreGetOrderById = (parameters = {}) => {
  */
 export const StoreDeleteOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/store/order/{orderId}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/store/order/{orderId}'
 
   if (parameters['orderId'] !== undefined) {
     url = url.replace('{orderId}', parameters['orderId'])
   }
-  if(parameters['orderId'] === undefined) {
+  if (parameters['orderId'] === undefined) {
     return Promise.reject(new Error('Missing required Integer parameter: orderId'))
   }
   return request('delete', url, params, config)
@@ -337,15 +349,16 @@ export const StoreDeleteOrder = (parameters = {}) => {
  */
 export const UserCreateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user'
 
   if (parameters['body'] !== undefined) {
     params.body = parameters['body']
   }
-  if(parameters['body'] === undefined) {
+  if (parameters['body'] === undefined) {
     return Promise.reject(new Error('Missing required Object parameter: body'))
   }
   return request('post', url, params, config)
@@ -355,20 +368,21 @@ export const UserCreateUser = (parameters = {}) => {
  * @name UserCreateUsersWithArrayInput
  * @method post
  * @summary Creates list of users with given input array
- * @description 
+ * @description
  * @param { Object } [body] body - List of user object
  */
 export const UserCreateUsersWithArrayInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user/createWithArray'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user/createWithArray'
 
   if (parameters['body'] !== undefined) {
     params.body = parameters['body']
   }
-  if(parameters['body'] === undefined) {
+  if (parameters['body'] === undefined) {
     return Promise.reject(new Error('Missing required Object parameter: body'))
   }
   return request('post', url, params, config)
@@ -378,20 +392,21 @@ export const UserCreateUsersWithArrayInput = (parameters = {}) => {
  * @name UserCreateUsersWithListInput
  * @method post
  * @summary Creates list of users with given input array
- * @description 
+ * @description
  * @param { Object } [body] body - List of user object
  */
 export const UserCreateUsersWithListInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user/createWithList'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user/createWithList'
 
   if (parameters['body'] !== undefined) {
     params.body = parameters['body']
   }
-  if(parameters['body'] === undefined) {
+  if (parameters['body'] === undefined) {
     return Promise.reject(new Error('Missing required Object parameter: body'))
   }
   return request('post', url, params, config)
@@ -401,27 +416,28 @@ export const UserCreateUsersWithListInput = (parameters = {}) => {
  * @name UserLoginUser
  * @method get
  * @summary Logs user into the system
- * @description 
+ * @description
  * @param { String } [query] username - The user name for login
  * @param { String } [query] password - The password for login in clear text
  */
 export const UserLoginUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user/login'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user/login'
 
   if (parameters['username'] !== undefined) {
     params.querys.push(parameters['username'])
   }
-  if(parameters['username'] === undefined) {
+  if (parameters['username'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: username'))
   }
   if (parameters['password'] !== undefined) {
     params.querys.push(parameters['password'])
   }
-  if(parameters['password'] === undefined) {
+  if (parameters['password'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: password'))
   }
   return request('get', url, params, config)
@@ -431,14 +447,15 @@ export const UserLoginUser = (parameters = {}) => {
  * @name UserLogoutUser
  * @method get
  * @summary Logs out current logged in user session
- * @description 
+ * @description
  */
 export const UserLogoutUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user/logout'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user/logout'
 
   return request('get', url, params, config)
 }
@@ -447,20 +464,21 @@ export const UserLogoutUser = (parameters = {}) => {
  * @name UserGetUserByName
  * @method get
  * @summary Get user by user name
- * @description 
- * @param { String } [path] username - The name that needs to be fetched. Use user1 for testing. 
+ * @description
+ * @param { String } [path] username - The name that needs to be fetched. Use user1 for testing.
  */
 export const UserGetUserByName = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user/{username}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user/{username}'
 
   if (parameters['username'] !== undefined) {
     url = url.replace('{username}', parameters['username'])
   }
-  if(parameters['username'] === undefined) {
+  if (parameters['username'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: username'))
   }
   return request('get', url, params, config)
@@ -476,21 +494,22 @@ export const UserGetUserByName = (parameters = {}) => {
  */
 export const UserUpdateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user/{username}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user/{username}'
 
   if (parameters['username'] !== undefined) {
     url = url.replace('{username}', parameters['username'])
   }
-  if(parameters['username'] === undefined) {
+  if (parameters['username'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: username'))
   }
   if (parameters['body'] !== undefined) {
     params.body = parameters['body']
   }
-  if(parameters['body'] === undefined) {
+  if (parameters['body'] === undefined) {
     return Promise.reject(new Error('Missing required Object parameter: body'))
   }
   return request('put', url, params, config)
@@ -505,15 +524,16 @@ export const UserUpdateUser = (parameters = {}) => {
  */
 export const UserDeleteUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '/user/{username}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
+  url = '/user/{username}'
 
   if (parameters['username'] !== undefined) {
     url = url.replace('{username}', parameters['username'])
   }
-  if(parameters['username'] === undefined) {
+  if (parameters['username'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: username'))
   }
   return request('delete', url, params, config)

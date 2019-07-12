@@ -7,26 +7,27 @@
  * @summary {{ summary }}
 {{ wrap-helper description }}
 {{#parameters}}
- * @param { {{type}} } [{{in}}] {{name}} - {{ safestring-helper description }}
+ * @param { {{type}} } [{{in}}] {{name}} -{{ safestring-helper description }}
 {{/parameters}}
  */
 export const {{operationId}} = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
-  let url = '{{path}}'
-  let params = {query: [], headers: [], body: {}}
+  let url = ''
+  const params = { query: [], headers: [], body: {}}
 {{#if consumes}}
   config.headers['Content-Type'] = '{{consumes}}'
 {{/if}}
 {{#if produces}}
   config.headers['Accept'] = '{{produces}}'
 {{/if}}
+  url = '{{path}}'
 {{form-data-helper consumes}}
 {{#parameters}}
   if (parameters['{{name}}'] !== undefined) {
 {{compare-helper this}}
   }
 {{#required}}
-  if(parameters['{{name}}'] === undefined) {
+  if (parameters['{{name}}'] === undefined) {
     return Promise.reject(new Error('Missing required {{type}} parameter: {{name}}'))
   }
 {{/required}}
