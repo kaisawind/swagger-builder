@@ -77,7 +77,7 @@ var PetAddPet = function PetAddPet() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -116,7 +116,7 @@ var PetUpdatePet = function PetUpdatePet() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -155,7 +155,7 @@ var PetFindPetsByStatus = function PetFindPetsByStatus() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -195,7 +195,7 @@ var PetFindPetsByTags = function PetFindPetsByTags() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -234,7 +234,7 @@ var PetGetPetById = function PetGetPetById() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -275,7 +275,7 @@ var PetUpdatePetWithForm = function PetUpdatePetWithForm() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -324,7 +324,7 @@ var PetDeletePet = function PetDeletePet() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -369,7 +369,7 @@ var PetUploadFile = function PetUploadFile() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -416,7 +416,7 @@ var StoreGetInventory = function StoreGetInventory() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -446,7 +446,7 @@ var StorePlaceOrder = function StorePlaceOrder() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -485,7 +485,7 @@ var StoreGetOrderById = function StoreGetOrderById() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -524,7 +524,7 @@ var StoreDeleteOrder = function StoreDeleteOrder() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -563,7 +563,7 @@ var UserCreateUser = function UserCreateUser() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -602,7 +602,7 @@ var UserCreateUsersWithArrayInput = function UserCreateUsersWithArrayInput() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -641,7 +641,7 @@ var UserCreateUsersWithListInput = function UserCreateUsersWithListInput() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -681,7 +681,7 @@ var UserLoginUser = function UserLoginUser() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -727,7 +727,7 @@ var UserLogoutUser = function UserLogoutUser() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -757,7 +757,7 @@ var UserGetUserByName = function UserGetUserByName() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -797,7 +797,7 @@ var UserUpdateUser = function UserUpdateUser() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };
@@ -844,7 +844,7 @@ var UserDeleteUser = function UserDeleteUser() {
   var config = parameters.$config ? parameters.$config : {};
   var url = '';
   var params = {
-    query: [],
+    querys: [],
     headers: {},
     body: {}
   };

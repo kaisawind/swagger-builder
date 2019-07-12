@@ -49,7 +49,7 @@ export const request = (method, url, params, config = {}) => {
 export const PetAddPet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -76,7 +76,7 @@ export const PetAddPet = (parameters = {}) => {
 export const PetUpdatePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -103,7 +103,7 @@ export const PetUpdatePet = (parameters = {}) => {
 export const PetFindPetsByStatus = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -131,7 +131,7 @@ export const PetFindPetsByStatus = (parameters = {}) => {
 export const PetFindPetsByTags = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -158,7 +158,7 @@ export const PetFindPetsByTags = (parameters = {}) => {
 export const PetGetPetById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -187,7 +187,7 @@ export const PetGetPetById = (parameters = {}) => {
 export const PetUpdatePetWithForm = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -221,7 +221,7 @@ export const PetUpdatePetWithForm = (parameters = {}) => {
 export const PetDeletePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -253,7 +253,7 @@ export const PetDeletePet = (parameters = {}) => {
 export const PetUploadFile = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -285,7 +285,7 @@ export const PetUploadFile = (parameters = {}) => {
 export const StoreGetInventory = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -306,7 +306,7 @@ export const StoreGetInventory = (parameters = {}) => {
 export const StorePlaceOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -333,7 +333,7 @@ export const StorePlaceOrder = (parameters = {}) => {
 export const StoreGetOrderById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -360,7 +360,7 @@ export const StoreGetOrderById = (parameters = {}) => {
 export const StoreDeleteOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -387,7 +387,7 @@ export const StoreDeleteOrder = (parameters = {}) => {
 export const UserCreateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -414,7 +414,7 @@ export const UserCreateUser = (parameters = {}) => {
 export const UserCreateUsersWithArrayInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -441,7 +441,7 @@ export const UserCreateUsersWithArrayInput = (parameters = {}) => {
 export const UserCreateUsersWithListInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -469,7 +469,7 @@ export const UserCreateUsersWithListInput = (parameters = {}) => {
 export const UserLoginUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -501,7 +501,7 @@ export const UserLoginUser = (parameters = {}) => {
 export const UserLogoutUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -522,7 +522,7 @@ export const UserLogoutUser = (parameters = {}) => {
 export const UserGetUserByName = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -550,7 +550,7 @@ export const UserGetUserByName = (parameters = {}) => {
 export const UserUpdateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -583,7 +583,7 @@ export const UserUpdateUser = (parameters = {}) => {
 export const UserDeleteUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { query: [], headers: {}, body: {}}
+  const params = { querys: [], headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
