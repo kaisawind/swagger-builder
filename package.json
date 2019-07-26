@@ -1,6 +1,6 @@
 {
   "name": "swagger-builder",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "build swagger to javascript with axios",
   "author": "kaisawind <wind.kaisa@gmail.com>",
   "license": "MIT",

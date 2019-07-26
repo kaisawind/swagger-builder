@@ -194,7 +194,7 @@ export const PetUpdatePetWithForm = (parameters = {}) => {
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/{petId}'
-  const formData = new URLSearchParams()
+  params.body = new URLSearchParams()
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
   }
@@ -202,10 +202,10 @@ export const PetUpdatePetWithForm = (parameters = {}) => {
     return Promise.reject(new Error('Missing required Integer parameter: petId'))
   }
   if (parameters['name'] !== undefined) {
-    formData.append('name', parameters['name'])
+    params.body.append('name', parameters['name'])
   }
   if (parameters['status'] !== undefined) {
-    formData.append('status', parameters['status'])
+    params.body.append('status', parameters['status'])
   }
   return request('post', url, params, config)
 }
@@ -260,7 +260,7 @@ export const PetUploadFile = (parameters = {}) => {
   config.headers['Content-Type'] = 'multipart/form-data'
   config.headers['Accept'] = 'application/json'
   url = '/pet/{petId}/uploadImage'
-  const formData = new FormData()
+  params.body = new FormData()
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
   }
@@ -268,10 +268,10 @@ export const PetUploadFile = (parameters = {}) => {
     return Promise.reject(new Error('Missing required Integer parameter: petId'))
   }
   if (parameters['additionalMetadata'] !== undefined) {
-    formData.append('additionalMetadata', parameters['additionalMetadata'])
+    params.body.append('additionalMetadata', parameters['additionalMetadata'])
   }
   if (parameters['file'] !== undefined) {
-    formData.append('file', parameters['file'])
+    params.body.append('file', parameters['file'])
   }
   return request('post', url, params, config)
 }
