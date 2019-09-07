@@ -132,7 +132,7 @@ export const FindPetsByStatus = (parameters = {}) => {
   url = '/pet/findByStatus'
 
   if (parameters['status'] !== undefined) {
-    params.querys.append('status', parameters['status'])
+    params.querys['status'] = parameters['status']
   }
   if (parameters['status'] === undefined) {
     return Promise.reject(new Error('Missing required Array parameter: status'))
@@ -146,7 +146,7 @@ export const FindPetsByStatusURL = (parameters = {}) => {
   let url = ''
   const querys = []
   url = '/pet/findByStatus'
-  querys.append('status', parameters['status'])
+  querys['status'] = parameters['status']
   return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
@@ -170,7 +170,7 @@ export const FindPetsByTags = (parameters = {}) => {
   url = '/pet/findByTags'
 
   if (parameters['tags'] !== undefined) {
-    params.querys.append('tags', parameters['tags'])
+    params.querys['tags'] = parameters['tags']
   }
   if (parameters['tags'] === undefined) {
     return Promise.reject(new Error('Missing required Array parameter: tags'))
@@ -185,7 +185,7 @@ export const FindPetsByTagsURL = (parameters = {}) => {
   let url = ''
   const querys = []
   url = '/pet/findByTags'
-  querys.append('tags', parameters['tags'])
+  querys['tags'] = parameters['tags']
   return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
@@ -293,7 +293,7 @@ export const DeletePet = (parameters = {}) => {
   url = '/pet/{petId}'
 
   if (parameters['api_key'] !== undefined) {
-    params.headers.append('api_key', parameters['api_key'])
+    params.headers['api_key'] = parameters['api_key']
   }
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
@@ -633,13 +633,13 @@ export const LoginUser = (parameters = {}) => {
   url = '/user/login'
 
   if (parameters['username'] !== undefined) {
-    params.querys.append('username', parameters['username'])
+    params.querys['username'] = parameters['username']
   }
   if (parameters['username'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: username'))
   }
   if (parameters['password'] !== undefined) {
-    params.querys.append('password', parameters['password'])
+    params.querys['password'] = parameters['password']
   }
   if (parameters['password'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: password'))
@@ -653,8 +653,8 @@ export const LoginUserURL = (parameters = {}) => {
   let url = ''
   const querys = []
   url = '/user/login'
-  querys.append('username', parameters['username'])
-  querys.append('password', parameters['password'])
+  querys['username'] = parameters['username']
+  querys['password'] = parameters['password']
   return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
