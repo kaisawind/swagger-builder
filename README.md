@@ -1,8 +1,8 @@
-<h1 align="center">
+<p align="center">
   <br>
   <img src="https://repository-images.githubusercontent.com/167809029/27811780-98cd-11e9-9d47-18889b196016" alt="Kaisawind's character" width="400">
   <br>
-</h1>
+</p>
 
 <p align="center">
   <a href="https://github.com/kaisawind/swagger-builder/releases">
