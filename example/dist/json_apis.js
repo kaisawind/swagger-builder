@@ -40,13 +40,13 @@ export const request = (method, url, params, config = {}) => {
 }
 
 /**
- * @name PetAddPet
+ * @name AddPet
  * @method post
  * @summary Add a new pet to the store
  * @description
  * @param { Object } [body] body - Pet object that needs to be added to the store
  */
-export const PetAddPet = (parameters = {}) => {
+export const AddPet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -65,15 +65,25 @@ export const PetAddPet = (parameters = {}) => {
   }
   return request('post', url, params, config)
 }
+/**
+ * @name AddPetURL
+ */
+export const AddPetURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet'
+  // body body
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name PetUpdatePet
+ * @name UpdatePet
  * @method put
  * @summary Update an existing pet
  * @description
  * @param { Object } [body] body - Pet object that needs to be added to the store
  */
-export const PetUpdatePet = (parameters = {}) => {
+export const UpdatePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -92,15 +102,25 @@ export const PetUpdatePet = (parameters = {}) => {
   }
   return request('put', url, params, config)
 }
+/**
+ * @name UpdatePetURL
+ */
+export const UpdatePetURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet'
+  // body body
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name PetFindPetsByStatus
+ * @name FindPetsByStatus
  * @method get
  * @summary Finds Pets by status
  * @description Multiple status values can be provided with comma separated strings
  * @param { Array } [query] status - Status values that need to be considered for filter
  */
-export const PetFindPetsByStatus = (parameters = {}) => {
+export const FindPetsByStatus = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -119,16 +139,26 @@ export const PetFindPetsByStatus = (parameters = {}) => {
   }
   return request('get', url, params, config)
 }
+/**
+ * @name FindPetsByStatusURL
+ */
+export const FindPetsByStatusURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet/findByStatus'
+  querys.push(parameters['status'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name PetFindPetsByTags
+ * @name FindPetsByTags
  * @deprecated
  * @method get
  * @summary Finds Pets by tags
  * @description Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.
  * @param { Array } [query] tags - Tags to filter by
  */
-export const PetFindPetsByTags = (parameters = {}) => {
+export const FindPetsByTags = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -147,15 +177,26 @@ export const PetFindPetsByTags = (parameters = {}) => {
   }
   return request('get', url, params, config)
 }
+/**
+ * @name FindPetsByTagsURL
+ * @deprecated
+ */
+export const FindPetsByTagsURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet/findByTags'
+  querys.push(parameters['tags'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name PetGetPetById
+ * @name GetPetById
  * @method get
  * @summary Find pet by ID
  * @description Returns a single pet
  * @param { Integer } [path] petId - ID of pet to return
  */
-export const PetGetPetById = (parameters = {}) => {
+export const GetPetById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -174,9 +215,19 @@ export const PetGetPetById = (parameters = {}) => {
   }
   return request('get', url, params, config)
 }
+/**
+ * @name GetPetByIdURL
+ */
+export const GetPetByIdURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet/{petId}'
+  url = url.replace('{petId}', parameters['petId'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name PetUpdatePetWithForm
+ * @name UpdatePetWithForm
  * @method post
  * @summary Updates a pet in the store with form data
  * @description
@@ -184,7 +235,7 @@ export const PetGetPetById = (parameters = {}) => {
  * @param { String } [formData] name - Updated name of the pet
  * @param { String } [formData] status - Updated status of the pet
  */
-export const PetUpdatePetWithForm = (parameters = {}) => {
+export const UpdatePetWithForm = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -209,16 +260,28 @@ export const PetUpdatePetWithForm = (parameters = {}) => {
   }
   return request('post', url, params, config)
 }
+/**
+ * @name UpdatePetWithFormURL
+ */
+export const UpdatePetWithFormURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet/{petId}'
+  url = url.replace('{petId}', parameters['petId'])
+  // formData name
+  // formData status
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name PetDeletePet
+ * @name DeletePet
  * @method delete
  * @summary Deletes a pet
  * @description
  * @param { String } [header] api_key -
  * @param { Integer } [path] petId - Pet id to delete
  */
-export const PetDeletePet = (parameters = {}) => {
+export const DeletePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -240,9 +303,20 @@ export const PetDeletePet = (parameters = {}) => {
   }
   return request('delete', url, params, config)
 }
+/**
+ * @name DeletePetURL
+ */
+export const DeletePetURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet/{petId}'
+  // header api_key
+  url = url.replace('{petId}', parameters['petId'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name PetUploadFile
+ * @name UploadFile
  * @method post
  * @summary uploads an image
  * @description
@@ -250,7 +324,7 @@ export const PetDeletePet = (parameters = {}) => {
  * @param { String } [formData] additionalMetadata - Additional data to pass to server
  * @param { File } [formData] file - file to upload
  */
-export const PetUploadFile = (parameters = {}) => {
+export const UploadFile = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -275,14 +349,26 @@ export const PetUploadFile = (parameters = {}) => {
   }
   return request('post', url, params, config)
 }
+/**
+ * @name UploadFileURL
+ */
+export const UploadFileURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/pet/{petId}/uploadImage'
+  url = url.replace('{petId}', parameters['petId'])
+  // formData additionalMetadata
+  // formData file
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name StoreGetInventory
+ * @name GetInventory
  * @method get
  * @summary Returns pet inventories by status
  * @description Returns a map of status codes to quantities
  */
-export const StoreGetInventory = (parameters = {}) => {
+export const GetInventory = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -295,15 +381,24 @@ export const StoreGetInventory = (parameters = {}) => {
 
   return request('get', url, params, config)
 }
+/**
+ * @name GetInventoryURL
+ */
+export const GetInventoryURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/store/inventory'
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name StorePlaceOrder
+ * @name PlaceOrder
  * @method post
  * @summary Place an order for a pet
  * @description
  * @param { Object } [body] body - order placed for purchasing the pet
  */
-export const StorePlaceOrder = (parameters = {}) => {
+export const PlaceOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -322,15 +417,25 @@ export const StorePlaceOrder = (parameters = {}) => {
   }
   return request('post', url, params, config)
 }
+/**
+ * @name PlaceOrderURL
+ */
+export const PlaceOrderURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/store/order'
+  // body body
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name StoreGetOrderById
+ * @name GetOrderById
  * @method get
  * @summary Find purchase order by ID
  * @description For valid response try integer IDs with value >= 1 and <= 10.         Other values will generated exceptions
  * @param { Integer } [path] orderId - ID of pet that needs to be fetched
  */
-export const StoreGetOrderById = (parameters = {}) => {
+export const GetOrderById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -349,15 +454,25 @@ export const StoreGetOrderById = (parameters = {}) => {
   }
   return request('get', url, params, config)
 }
+/**
+ * @name GetOrderByIdURL
+ */
+export const GetOrderByIdURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/store/order/{orderId}'
+  url = url.replace('{orderId}', parameters['orderId'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name StoreDeleteOrder
+ * @name DeleteOrder
  * @method delete
  * @summary Delete purchase order by ID
  * @description For valid response try integer IDs with positive integer value.         Negative or non-integer values will generate API errors
  * @param { Integer } [path] orderId - ID of the order that needs to be deleted
  */
-export const StoreDeleteOrder = (parameters = {}) => {
+export const DeleteOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -376,15 +491,25 @@ export const StoreDeleteOrder = (parameters = {}) => {
   }
   return request('delete', url, params, config)
 }
+/**
+ * @name DeleteOrderURL
+ */
+export const DeleteOrderURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/store/order/{orderId}'
+  url = url.replace('{orderId}', parameters['orderId'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserCreateUser
+ * @name CreateUser
  * @method post
  * @summary Create user
  * @description This can only be done by the logged in user.
  * @param { Object } [body] body - Created user object
  */
-export const UserCreateUser = (parameters = {}) => {
+export const CreateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -403,15 +528,25 @@ export const UserCreateUser = (parameters = {}) => {
   }
   return request('post', url, params, config)
 }
+/**
+ * @name CreateUserURL
+ */
+export const CreateUserURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user'
+  // body body
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserCreateUsersWithArrayInput
+ * @name CreateUsersWithArrayInput
  * @method post
  * @summary Creates list of users with given input array
  * @description
  * @param { Object } [body] body - List of user object
  */
-export const UserCreateUsersWithArrayInput = (parameters = {}) => {
+export const CreateUsersWithArrayInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -430,15 +565,25 @@ export const UserCreateUsersWithArrayInput = (parameters = {}) => {
   }
   return request('post', url, params, config)
 }
+/**
+ * @name CreateUsersWithArrayInputURL
+ */
+export const CreateUsersWithArrayInputURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user/createWithArray'
+  // body body
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserCreateUsersWithListInput
+ * @name CreateUsersWithListInput
  * @method post
  * @summary Creates list of users with given input array
  * @description
  * @param { Object } [body] body - List of user object
  */
-export const UserCreateUsersWithListInput = (parameters = {}) => {
+export const CreateUsersWithListInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -457,16 +602,26 @@ export const UserCreateUsersWithListInput = (parameters = {}) => {
   }
   return request('post', url, params, config)
 }
+/**
+ * @name CreateUsersWithListInputURL
+ */
+export const CreateUsersWithListInputURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user/createWithList'
+  // body body
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserLoginUser
+ * @name LoginUser
  * @method get
  * @summary Logs user into the system
  * @description
  * @param { String } [query] username - The user name for login
  * @param { String } [query] password - The password for login in clear text
  */
-export const UserLoginUser = (parameters = {}) => {
+export const LoginUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -491,14 +646,25 @@ export const UserLoginUser = (parameters = {}) => {
   }
   return request('get', url, params, config)
 }
+/**
+ * @name LoginUserURL
+ */
+export const LoginUserURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user/login'
+  querys.push(parameters['username'])
+  querys.push(parameters['password'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserLogoutUser
+ * @name LogoutUser
  * @method get
  * @summary Logs out current logged in user session
  * @description
  */
-export const UserLogoutUser = (parameters = {}) => {
+export const LogoutUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -511,15 +677,24 @@ export const UserLogoutUser = (parameters = {}) => {
 
   return request('get', url, params, config)
 }
+/**
+ * @name LogoutUserURL
+ */
+export const LogoutUserURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user/logout'
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserGetUserByName
+ * @name GetUserByName
  * @method get
  * @summary Get user by user name
  * @description
  * @param { String } [path] username - The name that needs to be fetched. Use user1 for testing.
  */
-export const UserGetUserByName = (parameters = {}) => {
+export const GetUserByName = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -538,16 +713,26 @@ export const UserGetUserByName = (parameters = {}) => {
   }
   return request('get', url, params, config)
 }
+/**
+ * @name GetUserByNameURL
+ */
+export const GetUserByNameURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user/{username}'
+  url = url.replace('{username}', parameters['username'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserUpdateUser
+ * @name UpdateUser
  * @method put
  * @summary Updated user
  * @description This can only be done by the logged in user.
  * @param { String } [path] username - name that need to be updated
  * @param { Object } [body] body - Updated user object
  */
-export const UserUpdateUser = (parameters = {}) => {
+export const UpdateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -572,15 +757,26 @@ export const UserUpdateUser = (parameters = {}) => {
   }
   return request('put', url, params, config)
 }
+/**
+ * @name UpdateUserURL
+ */
+export const UpdateUserURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user/{username}'
+  url = url.replace('{username}', parameters['username'])
+  // body body
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
 /**
- * @name UserDeleteUser
+ * @name DeleteUser
  * @method delete
  * @summary Delete user
  * @description This can only be done by the logged in user.
  * @param { String } [path] username - The name that needs to be deleted
  */
-export const UserDeleteUser = (parameters = {}) => {
+export const DeleteUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
   const params = { querys: [], headers: {}, body: {}}
@@ -598,5 +794,15 @@ export const UserDeleteUser = (parameters = {}) => {
     return Promise.reject(new Error('Missing required String parameter: username'))
   }
   return request('delete', url, params, config)
+}
+/**
+ * @name DeleteUserURL
+ */
+export const DeleteUserURL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '/user/{username}'
+  url = url.replace('{username}', parameters['username'])
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 

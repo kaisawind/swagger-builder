@@ -37,4 +37,19 @@ export const {{operationId}} = (parameters = {}) => {
 {{/parameters}}
   return request('{{method}}', url, params, config)
 }
+/**
+ * @name {{operationId}}URL
+{{#if deprecated}}
+ * @deprecated
+{{/if}}
+ */
+export const {{operationId}}URL = (parameters = {}) => {
+  let url = ''
+  const querys = []
+  url = '{{path}}'
+{{#parameters}}
+{{url-compare-helper this}}
+{{/parameters}}
+  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+}
 
