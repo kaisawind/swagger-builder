@@ -13,7 +13,7 @@
 export const {{operationId}} = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }

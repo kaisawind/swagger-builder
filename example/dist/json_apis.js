@@ -49,7 +49,7 @@ export const request = (method, url, params, config = {}) => {
 export const AddPet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -86,7 +86,7 @@ export const AddPetURL = (parameters = {}) => {
 export const UpdatePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -123,7 +123,7 @@ export const UpdatePetURL = (parameters = {}) => {
 export const FindPetsByStatus = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -132,7 +132,7 @@ export const FindPetsByStatus = (parameters = {}) => {
   url = '/pet/findByStatus'
 
   if (parameters['status'] !== undefined) {
-    params.querys.push(parameters['status'])
+    params.querys.append('status', parameters['status'])
   }
   if (parameters['status'] === undefined) {
     return Promise.reject(new Error('Missing required Array parameter: status'))
@@ -146,7 +146,7 @@ export const FindPetsByStatusURL = (parameters = {}) => {
   let url = ''
   const querys = []
   url = '/pet/findByStatus'
-  querys.push(parameters['status'])
+  querys.append('status', parameters['status'])
   return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
@@ -161,7 +161,7 @@ export const FindPetsByStatusURL = (parameters = {}) => {
 export const FindPetsByTags = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -170,7 +170,7 @@ export const FindPetsByTags = (parameters = {}) => {
   url = '/pet/findByTags'
 
   if (parameters['tags'] !== undefined) {
-    params.querys.push(parameters['tags'])
+    params.querys.append('tags', parameters['tags'])
   }
   if (parameters['tags'] === undefined) {
     return Promise.reject(new Error('Missing required Array parameter: tags'))
@@ -185,7 +185,7 @@ export const FindPetsByTagsURL = (parameters = {}) => {
   let url = ''
   const querys = []
   url = '/pet/findByTags'
-  querys.push(parameters['tags'])
+  querys.append('tags', parameters['tags'])
   return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
@@ -199,7 +199,7 @@ export const FindPetsByTagsURL = (parameters = {}) => {
 export const GetPetById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -238,7 +238,7 @@ export const GetPetByIdURL = (parameters = {}) => {
 export const UpdatePetWithForm = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -284,7 +284,7 @@ export const UpdatePetWithFormURL = (parameters = {}) => {
 export const DeletePet = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -293,7 +293,7 @@ export const DeletePet = (parameters = {}) => {
   url = '/pet/{petId}'
 
   if (parameters['api_key'] !== undefined) {
-    params.headers.push(parameters['api_key'])
+    params.headers.append('api_key', parameters['api_key'])
   }
   if (parameters['petId'] !== undefined) {
     url = url.replace('{petId}', parameters['petId'])
@@ -327,7 +327,7 @@ export const DeletePetURL = (parameters = {}) => {
 export const UploadFile = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -371,7 +371,7 @@ export const UploadFileURL = (parameters = {}) => {
 export const GetInventory = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -401,7 +401,7 @@ export const GetInventoryURL = (parameters = {}) => {
 export const PlaceOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -438,7 +438,7 @@ export const PlaceOrderURL = (parameters = {}) => {
 export const GetOrderById = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -475,7 +475,7 @@ export const GetOrderByIdURL = (parameters = {}) => {
 export const DeleteOrder = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -512,7 +512,7 @@ export const DeleteOrderURL = (parameters = {}) => {
 export const CreateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -549,7 +549,7 @@ export const CreateUserURL = (parameters = {}) => {
 export const CreateUsersWithArrayInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -586,7 +586,7 @@ export const CreateUsersWithArrayInputURL = (parameters = {}) => {
 export const CreateUsersWithListInput = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -624,7 +624,7 @@ export const CreateUsersWithListInputURL = (parameters = {}) => {
 export const LoginUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -633,13 +633,13 @@ export const LoginUser = (parameters = {}) => {
   url = '/user/login'
 
   if (parameters['username'] !== undefined) {
-    params.querys.push(parameters['username'])
+    params.querys.append('username', parameters['username'])
   }
   if (parameters['username'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: username'))
   }
   if (parameters['password'] !== undefined) {
-    params.querys.push(parameters['password'])
+    params.querys.append('password', parameters['password'])
   }
   if (parameters['password'] === undefined) {
     return Promise.reject(new Error('Missing required String parameter: password'))
@@ -653,8 +653,8 @@ export const LoginUserURL = (parameters = {}) => {
   let url = ''
   const querys = []
   url = '/user/login'
-  querys.push(parameters['username'])
-  querys.push(parameters['password'])
+  querys.append('username', parameters['username'])
+  querys.append('password', parameters['password'])
   return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
@@ -667,7 +667,7 @@ export const LoginUserURL = (parameters = {}) => {
 export const LogoutUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -697,7 +697,7 @@ export const LogoutUserURL = (parameters = {}) => {
 export const GetUserByName = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -735,7 +735,7 @@ export const GetUserByNameURL = (parameters = {}) => {
 export const UpdateUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
@@ -779,7 +779,7 @@ export const UpdateUserURL = (parameters = {}) => {
 export const DeleteUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
   let url = ''
-  const params = { querys: [], headers: {}, body: {}}
+  const params = { querys: {}, headers: {}, body: {}}
   if (config.headers === undefined) {
     config.headers = {}
   }
