@@ -70,10 +70,11 @@ export const AddPet = (parameters = {}) => {
  */
 export const AddPetURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet'
   // body body
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -107,10 +108,11 @@ export const UpdatePet = (parameters = {}) => {
  */
 export const UpdatePetURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet'
   // body body
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -144,10 +146,11 @@ export const FindPetsByStatus = (parameters = {}) => {
  */
 export const FindPetsByStatusURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet/findByStatus'
   querys['status'] = parameters['status']
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -183,10 +186,11 @@ export const FindPetsByTags = (parameters = {}) => {
  */
 export const FindPetsByTagsURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet/findByTags'
   querys['tags'] = parameters['tags']
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -220,10 +224,11 @@ export const GetPetById = (parameters = {}) => {
  */
 export const GetPetByIdURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet/{petId}'
   url = url.replace('{petId}', parameters['petId'])
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -265,12 +270,13 @@ export const UpdatePetWithForm = (parameters = {}) => {
  */
 export const UpdatePetWithFormURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet/{petId}'
   url = url.replace('{petId}', parameters['petId'])
   // formData name
   // formData status
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -308,11 +314,12 @@ export const DeletePet = (parameters = {}) => {
  */
 export const DeletePetURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet/{petId}'
   // header api_key
   url = url.replace('{petId}', parameters['petId'])
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -354,12 +361,13 @@ export const UploadFile = (parameters = {}) => {
  */
 export const UploadFileURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/pet/{petId}/uploadImage'
   url = url.replace('{petId}', parameters['petId'])
   // formData additionalMetadata
   // formData file
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -386,9 +394,10 @@ export const GetInventory = (parameters = {}) => {
  */
 export const GetInventoryURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/store/inventory'
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -422,10 +431,11 @@ export const PlaceOrder = (parameters = {}) => {
  */
 export const PlaceOrderURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/store/order'
   // body body
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -459,10 +469,11 @@ export const GetOrderById = (parameters = {}) => {
  */
 export const GetOrderByIdURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/store/order/{orderId}'
   url = url.replace('{orderId}', parameters['orderId'])
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -496,10 +507,11 @@ export const DeleteOrder = (parameters = {}) => {
  */
 export const DeleteOrderURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/store/order/{orderId}'
   url = url.replace('{orderId}', parameters['orderId'])
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -533,10 +545,11 @@ export const CreateUser = (parameters = {}) => {
  */
 export const CreateUserURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user'
   // body body
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -570,10 +583,11 @@ export const CreateUsersWithArrayInput = (parameters = {}) => {
  */
 export const CreateUsersWithArrayInputURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user/createWithArray'
   // body body
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -607,10 +621,11 @@ export const CreateUsersWithListInput = (parameters = {}) => {
  */
 export const CreateUsersWithListInputURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user/createWithList'
   // body body
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -651,11 +666,12 @@ export const LoginUser = (parameters = {}) => {
  */
 export const LoginUserURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user/login'
   querys['username'] = parameters['username']
   querys['password'] = parameters['password']
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -682,9 +698,10 @@ export const LogoutUser = (parameters = {}) => {
  */
 export const LogoutUserURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user/logout'
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -718,10 +735,11 @@ export const GetUserByName = (parameters = {}) => {
  */
 export const GetUserByNameURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user/{username}'
   url = url.replace('{username}', parameters['username'])
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -762,11 +780,12 @@ export const UpdateUser = (parameters = {}) => {
  */
 export const UpdateUserURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user/{username}'
   url = url.replace('{username}', parameters['username'])
   // body body
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 
 /**
@@ -800,9 +819,10 @@ export const DeleteUser = (parameters = {}) => {
  */
 export const DeleteUserURL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '/user/{username}'
   url = url.replace('{username}', parameters['username'])
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 

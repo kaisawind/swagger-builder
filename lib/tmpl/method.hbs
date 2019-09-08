@@ -45,11 +45,12 @@ export const {{operationId}} = (parameters = {}) => {
  */
 export const {{operationId}}URL = (parameters = {}) => {
   let url = ''
-  const querys = []
+  const querys = {}
   url = '{{path}}'
 {{#parameters}}
 {{url-compare-helper this}}
 {{/parameters}}
-  return domain + url + (querys.length > 0 ? '?' + (querys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const keys = Object.keys(querys)
+  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
 }
 

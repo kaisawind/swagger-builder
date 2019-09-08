@@ -19,8 +19,8 @@
 </p>
 
 <p align="center">
-  <a href="#getting-started">Getting started</a> •
-  <a href="#contributors">Contributors</a> •
+  <a href="#getting-started">Getting started</a>
+  <a href="#contributors">Contributors</a>
   <a href="#license">License</a>
 </p>
 
