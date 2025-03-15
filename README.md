@@ -3,7 +3,7 @@
     <img src="https://img.shields.io/github/release/kaisawind/swagger-builder.svg" alt="GitHub release">
   </a>
   <img src="https://img.shields.io/badge/node-%3E%3D16.20.2-blue.svg" />
-  <img src="https://img.shields.io/badge/npm-%3E%3D%210.8.0-blue.svg" />
+  <img src="https://img.shields.io/badge/npm-%3E%3D10.8.0-blue.svg" />
   <a href="https://travis-ci.com/kaisawind/swagger-builder">
     <img src="https://travis-ci.com/kaisawind/swagger-builder.svg?token=zAYkhFNqwBwmfWpeEt2s&branch=master">
   </a>
