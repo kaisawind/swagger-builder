@@ -2,47 +2,45 @@
 
 'use strict'
 
-/*eslint-disable no-console*/
-
 // stdlib
-var fs = require('fs')
+import { readFileSync, writeFile } from 'fs';
+import { fileURLToPath } from 'url';
 
 // 3rd-party
-var argparse = require('argparse')
+import { ArgumentParser } from 'argparse';
 
 // internal
-var builder = require('..')
+import SwaggerBuilder from '../index.js';
 
 // //////////////////////////////////////////////////////////////////////////////
 
-var cli = new argparse.ArgumentParser({
-  version: require('../package.json').version,
-  addHelp: true
-})
+const file = fileURLToPath(new URL('../package.json', import.meta.url));
+const json = readFileSync(file, 'utf8');
+const pkg = JSON.parse(json);
 
-cli.addArgument(['-f', '--file'], {
-  help: 'Swagger file to build'
-})
+const cli = new ArgumentParser({
+  add_help: true
+});
 
-cli.addArgument(['-o', '--output'], {
-  help: 'Js file to output'
-})
-
-// //////////////////////////////////////////////////////////////////////////////
-
-var options = cli.parseArgs()
+cli.add_argument('-v', '--version', { action: 'version', version: pkg.version });
+cli.add_argument('-f', '--file', { help: 'Swagger file to build' });
+cli.add_argument('-o', '--output', { help: 'Js file to output' });
 
 // //////////////////////////////////////////////////////////////////////////////
 
-function readFile(filename, callback) {
-  builder.SwaggerBuilder(filename, callback)
-}
+const options = cli.parse_args();
+
+// //////////////////////////////////////////////////////////////////////////////
+
+const readFile = (filename, callback) => {
+  SwaggerBuilder(filename, callback);
+};
 
 readFile(options.file, (template) => {
-  fs.writeFile(options.output, template, (error) => {
+  writeFile(options.output, template, (error) => {
     if (error) {
-      throw error
+      throw error;
     }
-    console.log('build ' + options.file + ' to ' + options.output + ' success')
+    console.log('build ' + options.file + ' to ' + options.output + ' success');
   })
-})
+});

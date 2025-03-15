@@ -1,3 +1,4 @@
+/*eslint-disable*/
 /**
  * @summary Swagger Petstore
  * @description This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc

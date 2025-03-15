@@ -1,16 +1,31 @@
-const apis = require('./apis')
+import {
+  GetInventory,
+  PlaceOrder,
+  GetOrderById,
+  DeleteOrder,
+  LoginUser,
+  CreateUsersWithArrayInput,
+  CreateUsersWithListInput,
+  CreateUser,
+  GetUserByName,
+  UpdateUser,
+  DeleteUser,
+  LogoutUser,
+} from './apis.js'
 
-apis.StoreGetInventory({ $config: {
-  headers: {
-    'api_key': 'admin'
+GetInventory({
+  $config: {
+    headers: {
+      'api_key': 'admin'
+    }
   }
-}}).then(response => {
+}).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.StorePlaceOrder({
+PlaceOrder({
   body: {
     'id': 0,
     'petId': 0,
@@ -25,25 +40,25 @@ apis.StorePlaceOrder({
   console.log(err.response.status)
 })
 
-apis.StoreGetOrderById({ orderId: 0 }).then(response => {
+GetOrderById({ orderId: 0 }).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.StoreDeleteOrder({ orderId: 0 }).then(response => {
+DeleteOrder({ orderId: 0 }).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.UserLoginUser({ username: 'admin', password: 'abc123' }).then(response => {
+LoginUser({ username: 'admin', password: 'abc123' }).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.UserCreateUsersWithArrayInput({
+CreateUsersWithArrayInput({
   body: [
     {
       'id': 0,
@@ -55,13 +70,14 @@ apis.UserCreateUsersWithArrayInput({
       'phone': 'string',
       'userStatus': 0
     }
-  ] }).then(response => {
+  ]
+}).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.UserCreateUsersWithListInput({
+CreateUsersWithListInput({
   body: [
     {
       'id': 0,
@@ -73,13 +89,14 @@ apis.UserCreateUsersWithListInput({
       'phone': 'string',
       'userStatus': 0
     }
-  ] }).then(response => {
+  ]
+}).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.UserCreateUser({
+CreateUser({
   body: {
     'id': 0,
     'username': 'string',
@@ -96,25 +113,25 @@ apis.UserCreateUser({
   console.log(err.response.status)
 })
 
-apis.UserGetUserByName({ username: 'admin' }).then(response => {
+GetUserByName({ username: 'admin' }).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.UserUpdateUser({ username: '111', body: {}}).then(response => {
+UpdateUser({ username: '111', body: {} }).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.UserDeleteUser({ username: '222' }).then(response => {
+DeleteUser({ username: '222' }).then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)
 })
 
-apis.UserLogoutUser().then(response => {
+LogoutUser().then(response => {
   console.log(response.status)
 }).catch(err => {
   console.log(err.response.status)

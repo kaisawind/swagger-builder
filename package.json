@@ -1,9 +1,10 @@
 {
   "name": "swagger-builder",
-  "version": "2.0.2",
+  "version": "2.1.2",
   "description": "build swagger to javascript with axios",
   "author": "kaisawind <wind.kaisa@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "test": "node ./test/test.js",
     "babel": "babel ./example/dist/yaml_apis.js > ./test/apis.js",
@@ -23,22 +24,21 @@
   "bugs": {
     "url": "https://github.com/kaisawind/swagger-builder/issues"
   },
-  "bin": {
-    "swagger-builder": "bin/swagger-builder.js"
-  },
+  "bin": "bin/swagger-builder.js",
   "dependencies": {
-    "argparse": "^1.0.10",
-    "handlebars": "^4.1.2",
-    "swagger-parser": "^7.0.1"
+    "argparse": "^2.0.1",
+    "handlebars": "^4.7.8",
+    "swagger-parser": "^10.0.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
-    "@babel/preset-env": "^7.5.4",
-    "axios": "^0.21.1",
-    "babel-eslint": "^10.0.2",
-    "babel-polyfill": "^6.26.0",
-    "eslint": "^6.0.1"
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.10",
+    "@babel/eslint-parser": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "axios": "^1.8.3",
+    "core-js": "^3.41.0",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0"
   },
   "engines": {
     "node": ">= 8.0.0",
@@ -48,5 +48,24 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false,
+          "targets": {
+            "edge": "17",
+            "firefox": "60",
+            "chrome": "67",
+            "safari": "11.1"
+          },
+          "useBuiltIns": "usage",
+          "corejs": "3.6.5"
+        }
+      ]
+    ]
+  },
+  "packageManager": "yarn@4.6.0"
 }

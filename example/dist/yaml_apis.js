@@ -1,5 +1,6 @@
+/*eslint-disable*/
 /**
- * @summary Swagger Petstore
+ * @summary Swagger Petstore 2.0
  * @description This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc
  * .freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters
  * .
@@ -158,7 +159,7 @@ export const FindPetsByStatusURL = (parameters = {}) => {
  * @deprecated
  * @method get
  * @summary Finds Pets by tags
- * @description Muliple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.
+ * @description Multiple tags can be provided with comma separated strings. Use         tag1, tag2, tag3 for testing.
  * @param { Array } [query] tags - Tags to filter by
  */
 export const FindPetsByTags = (parameters = {}) => {

@@ -1,10 +1,4 @@
 <p align="center">
-  <br>
-  <img src="https://repository-images.githubusercontent.com/167809029/27811780-98cd-11e9-9d47-18889b196016" alt="Kaisawind's character" width="400">
-  <br>
-</p>
-
-<p align="center">
   <a href="https://github.com/kaisawind/swagger-builder/releases">
     <img src="https://img.shields.io/github/release/kaisawind/swagger-builder.svg" alt="GitHub release">
   </a>

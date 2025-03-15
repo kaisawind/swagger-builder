@@ -1,3 +1,3 @@
 'use strict'
-var SwaggerBuilder = require('./lib/swagger-builder.js')
-module.exports = SwaggerBuilder
+import { SwaggerBuilder } from './lib/swagger-builder.js'
+export default SwaggerBuilder;
