@@ -4,8 +4,7 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [published]
+  push  
 
 jobs:
   build:
@@ -15,6 +14,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: env
       - run: corepack enable yarn
       - run: yarn
       - run: yarn test
