@@ -30,7 +30,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: corepack enable yarn
       - run: yarn
-      - run: echo ${NODE_AUTH_TOKEN}
       - run: yarn config set 'npmRegistries["//registry.npmjs.org"].npmAuthToken' ${NODE_AUTH_TOKEN}
       - run: yarn config set npmPublishRegistry https://registry.npmjs.org/
       - run: yarn npm publish
