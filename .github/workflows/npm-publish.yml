@@ -4,7 +4,7 @@
 name: Node.js Package
 
 on:
-  publish:
+  release:
     types: [published]
 
 jobs:
@@ -15,10 +15,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: env
+          cache: yarn
       - run: corepack enable yarn
-      - run: yarn
+      - run: yarn install
       - run: yarn test
+      - run: yarn test-json
+      - run: yarn test-yaml
+      - run: yarn lint
 
   publish-npm:
     needs: build
@@ -29,8 +32,9 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
+          cache: yarn
       - run: corepack enable yarn
-      - run: yarn
+      - run: yarn install
       - run: yarn config set 'npmRegistries["//registry.npmjs.org"].npmAuthToken' ${NODE_AUTH_TOKEN}
       - run: yarn config set npmPublishRegistry https://registry.npmjs.org/
       - run: yarn npm publish
