@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 20
           cache: yarn
-      - run: corepack enable yarn
+      - run: corepack enable
       - run: yarn install
       - run: yarn test
       - run: yarn test-json
@@ -33,7 +33,7 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
           cache: yarn
-      - run: corepack enable yarn
+      - run: corepack enable
       - run: yarn install
       - run: yarn config set 'npmRegistries["//registry.npmjs.org"].npmAuthToken' ${NODE_AUTH_TOKEN}
       - run: yarn config set npmPublishRegistry https://registry.npmjs.org/
