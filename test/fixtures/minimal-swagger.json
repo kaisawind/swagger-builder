@@ -1,0 +1,27 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Minimal API",
+    "version": "1.0.0"
+  },
+  "host": "api.example.com",
+  "basePath": "/v1",
+  "schemes": ["https"],
+  "produces": ["application/json"],
+  "paths": {
+    "/items": {
+      "get": {
+        "tags": ["items"],
+        "summary": "List items",
+        "operationId": "listItems",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  }
+}

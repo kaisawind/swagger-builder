@@ -33,6 +33,7 @@ export const request = (method, url, params, config = {}) => {
     method: method,
     url: url,
     params: params.querys,
+    paramsSerializer: params => Object.entries(params).filter(([,v]) => v != null).flatMap(([k,v]) => Array.isArray(v) ? v.map(e => k + '=' + encodeURIComponent(e)) : [k + '=' + encodeURIComponent(v)]).join('&'),
     headers: params.headers,
     data: params.body
   }
@@ -44,7 +45,7 @@ export const request = (method, url, params, config = {}) => {
  * @name AddPet
  * @method post
  * @summary Add a new pet to the store
- * @description
+
  * @param { Object } [body] body - Pet object that needs to be added to the store
  */
 export const AddPet = (parameters = {}) => {
@@ -54,7 +55,7 @@ export const AddPet = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json,application/xml'
+  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet'
 
@@ -74,15 +75,23 @@ export const AddPetURL = (parameters = {}) => {
   const querys = {}
   url = '/pet'
   // body body
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name UpdatePet
  * @method put
  * @summary Update an existing pet
- * @description
+
  * @param { Object } [body] body - Pet object that needs to be added to the store
  */
 export const UpdatePet = (parameters = {}) => {
@@ -92,7 +101,7 @@ export const UpdatePet = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json,application/xml'
+  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet'
 
@@ -112,8 +121,16 @@ export const UpdatePetURL = (parameters = {}) => {
   const querys = {}
   url = '/pet'
   // body body
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -130,7 +147,6 @@ export const FindPetsByStatus = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/findByStatus'
 
@@ -150,8 +166,16 @@ export const FindPetsByStatusURL = (parameters = {}) => {
   const querys = {}
   url = '/pet/findByStatus'
   querys['status'] = parameters['status']
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -169,7 +193,6 @@ export const FindPetsByTags = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/findByTags'
 
@@ -190,8 +213,16 @@ export const FindPetsByTagsURL = (parameters = {}) => {
   const querys = {}
   url = '/pet/findByTags'
   querys['tags'] = parameters['tags']
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -208,7 +239,6 @@ export const GetPetById = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/{petId}'
 
@@ -228,15 +258,23 @@ export const GetPetByIdURL = (parameters = {}) => {
   const querys = {}
   url = '/pet/{petId}'
   url = url.replace('{petId}', parameters['petId'])
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name UpdatePetWithForm
  * @method post
  * @summary Updates a pet in the store with form data
- * @description
+
  * @param { Integer } [path] petId - ID of pet that needs to be updated
  * @param { String } [formData] name - Updated name of the pet
  * @param { String } [formData] status - Updated status of the pet
@@ -276,15 +314,23 @@ export const UpdatePetWithFormURL = (parameters = {}) => {
   url = url.replace('{petId}', parameters['petId'])
   // formData name
   // formData status
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name DeletePet
  * @method delete
  * @summary Deletes a pet
- * @description
+
  * @param { String } [header] api_key -
  * @param { Integer } [path] petId - Pet id to delete
  */
@@ -295,7 +341,6 @@ export const DeletePet = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/pet/{petId}'
 
@@ -319,15 +364,23 @@ export const DeletePetURL = (parameters = {}) => {
   url = '/pet/{petId}'
   // header api_key
   url = url.replace('{petId}', parameters['petId'])
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name UploadFile
  * @method post
  * @summary uploads an image
- * @description
+
  * @param { Integer } [path] petId - ID of pet to update
  * @param { String } [formData] additionalMetadata - Additional data to pass to server
  * @param { File } [formData] file - file to upload
@@ -367,8 +420,16 @@ export const UploadFileURL = (parameters = {}) => {
   url = url.replace('{petId}', parameters['petId'])
   // formData additionalMetadata
   // formData file
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -384,7 +445,6 @@ export const GetInventory = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/json'
   url = '/store/inventory'
 
@@ -397,15 +457,23 @@ export const GetInventoryURL = (parameters = {}) => {
   let url = ''
   const querys = {}
   url = '/store/inventory'
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name PlaceOrder
  * @method post
  * @summary Place an order for a pet
- * @description
+
  * @param { Object } [body] body - order placed for purchasing the pet
  */
 export const PlaceOrder = (parameters = {}) => {
@@ -435,8 +503,16 @@ export const PlaceOrderURL = (parameters = {}) => {
   const querys = {}
   url = '/store/order'
   // body body
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -453,7 +529,6 @@ export const GetOrderById = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/store/order/{orderId}'
 
@@ -473,8 +548,16 @@ export const GetOrderByIdURL = (parameters = {}) => {
   const querys = {}
   url = '/store/order/{orderId}'
   url = url.replace('{orderId}', parameters['orderId'])
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -491,7 +574,6 @@ export const DeleteOrder = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/store/order/{orderId}'
 
@@ -511,8 +593,16 @@ export const DeleteOrderURL = (parameters = {}) => {
   const querys = {}
   url = '/store/order/{orderId}'
   url = url.replace('{orderId}', parameters['orderId'])
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -549,15 +639,23 @@ export const CreateUserURL = (parameters = {}) => {
   const querys = {}
   url = '/user'
   // body body
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name CreateUsersWithArrayInput
  * @method post
  * @summary Creates list of users with given input array
- * @description
+
  * @param { Object } [body] body - List of user object
  */
 export const CreateUsersWithArrayInput = (parameters = {}) => {
@@ -587,15 +685,23 @@ export const CreateUsersWithArrayInputURL = (parameters = {}) => {
   const querys = {}
   url = '/user/createWithArray'
   // body body
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name CreateUsersWithListInput
  * @method post
  * @summary Creates list of users with given input array
- * @description
+
  * @param { Object } [body] body - List of user object
  */
 export const CreateUsersWithListInput = (parameters = {}) => {
@@ -625,15 +731,23 @@ export const CreateUsersWithListInputURL = (parameters = {}) => {
   const querys = {}
   url = '/user/createWithList'
   // body body
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name LoginUser
  * @method get
  * @summary Logs user into the system
- * @description
+
  * @param { String } [query] username - The user name for login
  * @param { String } [query] password - The password for login in clear text
  */
@@ -644,7 +758,6 @@ export const LoginUser = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/login'
 
@@ -671,15 +784,23 @@ export const LoginUserURL = (parameters = {}) => {
   url = '/user/login'
   querys['username'] = parameters['username']
   querys['password'] = parameters['password']
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name LogoutUser
  * @method get
  * @summary Logs out current logged in user session
- * @description
+
  */
 export const LogoutUser = (parameters = {}) => {
   const config = parameters.$config ? parameters.$config : {}
@@ -688,7 +809,6 @@ export const LogoutUser = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/logout'
 
@@ -701,15 +821,23 @@ export const LogoutUserURL = (parameters = {}) => {
   let url = ''
   const querys = {}
   url = '/user/logout'
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
  * @name GetUserByName
  * @method get
  * @summary Get user by user name
- * @description
+
  * @param { String } [path] username - The name that needs to be fetched. Use user1 for testing.
  */
 export const GetUserByName = (parameters = {}) => {
@@ -719,7 +847,6 @@ export const GetUserByName = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/{username}'
 
@@ -739,8 +866,16 @@ export const GetUserByNameURL = (parameters = {}) => {
   const querys = {}
   url = '/user/{username}'
   url = url.replace('{username}', parameters['username'])
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -785,8 +920,16 @@ export const UpdateUserURL = (parameters = {}) => {
   url = '/user/{username}'
   url = url.replace('{username}', parameters['username'])
   // body body
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 
 /**
@@ -803,7 +946,6 @@ export const DeleteUser = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-  config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/xml,application/json'
   url = '/user/{username}'
 
@@ -823,7 +965,15 @@ export const DeleteUserURL = (parameters = {}) => {
   const querys = {}
   url = '/user/{username}'
   url = url.replace('{username}', parameters['username'])
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 

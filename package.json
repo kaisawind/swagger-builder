@@ -6,7 +6,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "test": "node ./test/test.js",
+    "test": "node --test test/unit/",
+    "test:integration": "node ./test/test.js",
+    "test:all": "node --test test/unit/ && node ./test/test.js",
     "babel": "babel ./example/dist/yaml_apis.js > ./test/apis.js",
     "lint": "eslint --ext .js .",
     "test-yaml": "./bin/swagger-builder.js -f=./example/swagger/swagger.yaml -o=./example/dist/yaml_apis.js",

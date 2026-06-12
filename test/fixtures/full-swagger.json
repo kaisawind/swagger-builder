@@ -1,0 +1,90 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Full Parameter API",
+    "version": "1.0.0",
+    "description": "API with all parameter locations and collection formats"
+  },
+  "host": "full.example.com",
+  "basePath": "/api",
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "tags": [
+    { "name": "items", "description": "Item operations", "externalDocs": { "url": "https://docs.example.com" } },
+    { "name": "files", "description": "File operations" }
+  ],
+  "paths": {
+    "/items": {
+      "get": {
+        "tags": ["items"],
+        "summary": "List items with array filters",
+        "operationId": "listItems",
+        "parameters": [
+          { "name": "tags", "in": "query", "type": "array", "items": { "type": "string" }, "collectionFormat": "multi" },
+          { "name": "ids", "in": "query", "type": "array", "items": { "type": "integer" }, "collectionFormat": "csv" },
+          { "name": "status", "in": "query", "type": "string" }
+        ]
+      },
+      "post": {
+        "tags": ["items"],
+        "summary": "Create item",
+        "operationId": "createItem",
+        "parameters": [
+          { "name": "body", "in": "body", "required": true, "schema": { "type": "object" } }
+        ]
+      }
+    },
+    "/items/{itemId}": {
+      "get": {
+        "tags": ["items"],
+        "summary": "Get item by ID",
+        "operationId": "getItemById",
+        "parameters": [
+          { "name": "itemId", "in": "path", "required": true, "type": "string" },
+          { "name": "x-api-key", "in": "header", "type": "string" }
+        ]
+      },
+      "delete": {
+        "tags": ["items"],
+        "summary": "Delete item",
+        "operationId": "deleteItem",
+        "parameters": [
+          { "name": "itemId", "in": "path", "required": true, "type": "string" }
+        ]
+      }
+    },
+    "/files/upload": {
+      "post": {
+        "tags": ["files"],
+        "summary": "Upload a file",
+        "operationId": "uploadFile",
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          { "name": "file", "in": "formData", "type": "file" },
+          { "name": "description", "in": "formData", "type": "string" }
+        ]
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["users"],
+        "summary": "Login with form",
+        "operationId": "loginUser",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "parameters": [
+          { "name": "username", "in": "formData", "required": true, "type": "string" },
+          { "name": "password", "in": "formData", "required": true, "type": "string" }
+        ]
+      }
+    },
+    "/deprecated-endpoint": {
+      "get": {
+        "tags": ["items"],
+        "summary": "Deprecated endpoint",
+        "operationId": "deprecatedEndpoint",
+        "deprecated": true,
+        "parameters": []
+      }
+    }
+  }
+}

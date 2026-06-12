@@ -17,8 +17,10 @@ export const {{operationId}} = (parameters = {}) => {
   if (config.headers === undefined) {
     config.headers = {}
   }
-{{#if consumes}}
-  config.headers['Content-Type'] = '{{consumes}}'
+{{#if hasBodyParam}}
+{{#if contentType}}
+  config.headers['Content-Type'] = '{{contentType}}'
+{{/if}}
 {{/if}}
 {{#if produces}}
   config.headers['Accept'] = '{{produces}}'
@@ -50,7 +52,15 @@ export const {{operationId}}URL = (parameters = {}) => {
 {{#parameters}}
 {{url-compare-helper this}}
 {{/parameters}}
-  const keys = Object.keys(querys)
-  return domain + url + (keys.length > 0 ? '?' + (keys.map(key => key + '=' + encodeURIComponent(querys[key])).join('&')) : '')
+  const parts = []
+  for (const key of Object.keys(querys)) {
+    const val = querys[key]
+    if (Array.isArray(val)) {
+      val.forEach(v => parts.push(key + '=' + encodeURIComponent(v)))
+    } else {
+      parts.push(key + '=' + encodeURIComponent(val))
+    }
+  }
+  return domain + url + (parts.length > 0 ? '?' + parts.join('&') : '')
 }
 

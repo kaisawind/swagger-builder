@@ -43,6 +43,7 @@ export const request = (method, url, params, config = {}) => {
     method: method,
     url: url,
     params: params.querys,
+    paramsSerializer: params => Object.entries(params).filter(([,v]) => v != null).flatMap(([k,v]) => Array.isArray(v) ? v.map(e => k + '=' + encodeURIComponent(e)) : [k + '=' + encodeURIComponent(v)]).join('&'),
     headers: params.headers,
     data: params.body
   }
