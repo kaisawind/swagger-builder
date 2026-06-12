@@ -32,6 +32,17 @@ const options = cli.parse_args();
 
 // //////////////////////////////////////////////////////////////////////////////
 
+if (!options.file) {
+  console.error('Error: missing required argument -f/--file <swagger file>')
+  process.exit(1)
+}
+if (!options.output) {
+  console.error('Error: missing required argument -o/--output <output file>')
+  process.exit(1)
+}
+
+// //////////////////////////////////////////////////////////////////////////////
+
 const readFile = (filename, callback) => {
   SwaggerBuilder(filename, callback);
 };

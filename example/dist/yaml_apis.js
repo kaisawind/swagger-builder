@@ -36,7 +36,7 @@ export const request = (method, url, params, config = {}) => {
     headers: params.headers,
     data: params.body
   }
-  configs = Object.assign(configs, config)
+  configs = { ...configs, ...config }
   return axiosInstance(configs)
 }
 
