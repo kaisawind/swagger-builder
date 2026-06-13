@@ -31,10 +31,6 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: corepack enable
-      - run: corepack yarn install
-      - run: corepack yarn config set 'npmRegistries["//registry.npmjs.org"].npmAuthToken' ${NODE_AUTH_TOKEN}
-      - run: corepack yarn config set npmPublishRegistry https://registry.npmjs.org/
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
